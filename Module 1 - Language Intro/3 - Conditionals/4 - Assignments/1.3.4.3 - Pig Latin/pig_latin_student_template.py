@@ -31,7 +31,6 @@ pig_latin = list()
 
 # iterate through words in sentence changing each element as necessary
 # put each new word in a list that we will re-assemble
-sent_list = [None] * len(words)
 
 for word in words:
 
@@ -41,21 +40,23 @@ for word in words:
         ### your code here ###
         continue
         sent_list[words.index(word)] = word
+        pig_latin.append(word)
 
     # starts with vowel, modify accordingly and put in list
     elif starts_with_vowel(word) == True:
         # modify the word and place in pig_latin list
         ### your code here ###
         continue
+        pig_latin.append(word+"vay")
 
     # starts with consonant, modify accordingly  and put in list
     else:
         # modify word and place in pig_latin list
         ### your code here ###
         continue
+        pig_latin.append(word[1:len(word)]+word[0]+"ay")
 
 # a new sentence in which you will re-assemble each of the modified words
-new_sentence = ""
 
 # re-assemble list of words into string
 for w in pig_latin:
