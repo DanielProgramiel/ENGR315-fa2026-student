@@ -28,5 +28,11 @@ random_list_B = random.sample(range(100), random_length)
 # do not modify this variable's name, you can/should adjust the contents ;)
 # e.g. longest_list_is = myList
 longest_list_is = None
+if np.std(random_list_A) > np.std(random_list_B):
+    Result_list_is = random_list_A
+else:
+    Result_list_is = random_list_B
+
+longest_list_is = Result_list_is
 
 ### YOUR CODE HERE

@@ -31,6 +31,8 @@ pig_latin = list()
 
 # iterate through words in sentence changing each element as necessary
 # put each new word in a list that we will re-assemble
+sent_list = [None] * len(words)
+
 for word in words:
 
     # word is too short. Do nothing.
@@ -38,6 +40,7 @@ for word in words:
         # place the word in the pig_latin list
         ### your code here ###
         continue
+        sent_list[words.index(word)] = word
 
     # starts with vowel, modify accordingly and put in list
     elif starts_with_vowel(word) == True:
