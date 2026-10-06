@@ -68,3 +68,28 @@ def parse_nyt_data(file_path=''):
     return data
 
 ### YOUR CODE HERE ###
+us_counties_data = parse_nyt_data('../../data/covid/us-counties.csv')
+harrisonburg_data = []
+harrisonburg_positive_data = []
+harrisonburg_new_cases_data = []
+harrisonburg_week_average_data = []
+for entry in us_counties_data:
+    if entry[1] == 'Rockingham' and entry[2] == 'Virginia':
+        harrisonburg_data.append(entry)
+        if entry[4] > 0:
+            harrisonburg_positive_data.append(entry)
+for i in (range(len(harrisonburg_data))):
+    if i == 0:
+        harrisonburg_new_cases_data.append(harrisonburg_data[i][4])
+    else:
+        harrisonburg_new_cases_data.append((harrisonburg_data[i][4]-harrisonburg_data[i-1][4]))
+
+for i in range(len(harrisonburg_new_cases_data)-6):
+    harrisonburg_week_average_data.append(sum(harrisonburg_new_cases_data[i:i+7])/7)
+
+# Question 1: Date of the first case in Harrisonburg, VA
+print("Harrisonburg First Case Date: " + str(harrisonburg_positive_data[0][0]))
+# Question 2: Worst day for new cases in Harrisonburg, VA
+print("Worst Day for New Cases in Harrisonburg: " + str(harrisonburg_data[harrisonburg_new_cases_data.index(max(harrisonburg_new_cases_data))][0]))
+# Question 3: 7-day maximum for new cases in Harrisonburg, VA
+print("7-Day Maximum for New Cases in Harrisonburg: ",str(harrisonburg_data[harrisonburg_week_average_data.index(max(harrisonburg_week_average_data))][0])," to ",str(harrisonburg_data[harrisonburg_week_average_data.index(max(harrisonburg_week_average_data))+6][0]))
