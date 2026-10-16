@@ -101,6 +101,7 @@ for i in (range(len(harrisonburg_data))):
     else:
         #The difference in cases from the prior day to the cases in the current day is the number of new cases. It can be both positive and negative.
         harrisonburg_new_cases_data.append((harrisonburg_data[i][4]-harrisonburg_data[i-1][4]))
+        
 for i in (range(len(rockingham_data))):
     if i == 0:
         rockingham_new_cases_data.append(rockingham_data[i][4])
